@@ -30,6 +30,14 @@ class AccountAuthenticationForm(forms.ModelForm):
 
 
 class AccountUpdateForm(forms.ModelForm):
+    email = forms.EmailField(required=True,
+                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nick_name = forms.CharField(max_length=100,
+                                required=True,
+                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = Account
-        exclude = ()
+        fields = ("email",
+                  "nick_name")
+

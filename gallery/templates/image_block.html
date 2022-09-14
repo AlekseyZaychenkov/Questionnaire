@@ -7,7 +7,7 @@
             <a type="button" class="btn btn-sm btn-outline-dark"  style="border-radius: 16px;"
                href="{% url 'home_image_by_id_by_action' selected_image_id=image.id image_action='edit' %}">Edit</a>
             <script>
-                {% if selected_image_id != None and image_action == "edit" %}
+                {% if selected_image != None and image_action == "edit" %}
                     $(function() {
                       $('#edit_image_modal').modal({show: true});
                     });
@@ -17,7 +17,7 @@
             <a type="button" class="btn btn-sm btn-danger rounded-circle"
                href="{% url 'home_image_by_id_by_action' selected_image_id=image.id image_action='delete' %}">X</a>
             <script>
-                {% if selected_image_id != None and image_action == "delete" %}
+                {% if selected_image != None and image_action == "delete" %}
                     $(function() {
                       $('#delete_image_modal').modal({show: true});
                     });
@@ -27,7 +27,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-        <img class="img-fluid" src={{media_root}}{{image.image_field}} style="height: 200px; object-fit: contain;">
+        <img class="img-fluid img-thumbnail" src={{media_root}}{{image.image_field}} style="height: 200px; object-fit: contain;">
     </div>
 
     <div class="row d-flex justify-content-center">

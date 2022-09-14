@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+import os
 
 from django import forms
 
@@ -19,11 +20,11 @@ class ImageCreateForm(forms.ModelForm):
         self.instance = image
 
     def save(self, commit=True):
-        photo = self.instance
+        image = self.instance
         if commit:
-            photo.save()
+            image.save()
 
-        return photo
+        return image
 
     class Meta:
         model = Image
@@ -31,24 +32,19 @@ class ImageCreateForm(forms.ModelForm):
 
 
 class ImageEditForm(forms.ModelForm):
-    image_field = forms.ImageField(widget=forms.ClearableFileInput(), validators=[validate_file_extension])
+    image_field = forms.ImageField(widget=forms.ClearableFileInput(), validators=[validate_file_extension], required=False)
     text = forms.CharField(widget=forms.Textarea(attrs={"rows": 3, "cols": 10}), required=False)
 
-    def set_gallery(self, gallery):
-        image = self.instance
-        image.gallery = gallery
-        self.instance = image
-
     def save(self, commit=True):
-        photo = self.instance
+        image = self.instance
         if commit:
-            photo.save()
+            image.save()
 
-        return photo
+        return image
 
     class Meta:
         model = Image
-        exclude = ('gallery', )
+        exclude = ('image_field', 'text', 'gallery',)
 
 
 class ImageDeleteForm(forms.Form):
