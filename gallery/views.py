@@ -2,11 +2,11 @@ import os
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
 
-from settings import MEDIA_ROOT
+from Photo_Gallery.settings import MEDIA_ROOT
 from gallery.forms import *
-
+from gallery.models import Gallery
 
 log = logging.getLogger(__name__)
 
@@ -25,8 +25,6 @@ def home(request):
             else:
                 log.error(form.errors.as_data())
         return HttpResponseRedirect('home')
-
-
 
     return render(request, "home.html", context)
 

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import logging
-import os
 
 from django import forms
 
-from gallery.models import Gallery, Image
+from gallery.models import Image
 from gallery.validators import validate_file_extension
+from utils import delete_image
 
 log = logging.getLogger(__name__)
 
@@ -53,8 +53,4 @@ class ImageDeleteForm(forms.Form):
     def delete(self):
         image_id = self.data["image_id"]
         image = Image.objects.get(id=image_id)
-        if image:
-            # TODO: delete image file
-            image.delete()
-        else:
-            log.error(f"Image entry with id='{image_id}' does not exist.")
+        delete_image(image)
