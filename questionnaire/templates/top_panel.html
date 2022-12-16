@@ -1,0 +1,19 @@
+{% load widget_tweaks %} {% block content %}
+
+<style>
+
+</style>
+
+<div class="row top-row">
+  <div class="col-md-11 col-lg-11">
+  </div>
+  <div class="col-md-1 col-lg-1">
+      <div class="btn-group btn-group-lg" role="group">
+        <button type="button" class="btn-sm btn-outline-dark">
+          <a href="{% url 'logout' %}">Log out</a>
+        </button>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

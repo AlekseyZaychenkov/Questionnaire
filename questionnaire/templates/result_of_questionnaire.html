@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load widget_tweaks %} {% block content %}
+
+
+<h3>{{questionnaire.title}}</h3>
+<h5>Questions total: {{questions_total}}</h5>
+<h5>Correct answers: {{correct_answers_counter}}</h5>
+<h5>Incorrect answers: {{incorrect_answers_counter}}</h5>
+<h5>Percent of correct answers: {{percent_of_correct_answers}}</h5>
+
+<a type="button" class="btn btn-primary" href="{% url 'questionnaires' %}">Go to list of questionnaires</a>
+
+{% endblock content %}

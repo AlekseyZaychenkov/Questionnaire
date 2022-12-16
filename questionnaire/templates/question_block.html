@@ -1,0 +1,48 @@
+{% load widget_tweaks %} {% block content %}
+
+
+<div class="col-md-3 card">
+    <h4>{{question.text}}</h4>
+
+    <form enctype="multipart/form-data" method="post" class="mt-3"> {% csrf_token %}
+
+        <div class="form-row">
+            <label>{{question.option_1}}</label>
+            {% render_field answer_give_form.option_1_chosen class="form-control" %}
+            {{ post_edit_form.boolean.errors }}
+        </div>
+
+        <div class="form-row">
+            <label>{{question.option_2}}</label>
+            {% render_field answer_give_form.option_2_chosen class="form-control" %}
+            {{ post_edit_form.boolean.errors }}
+        </div>
+
+        {% if question.option_3|length > 0 %}
+            <div class="form-row">
+                <label>{{question.option_3}}</label>
+                {% render_field answer_give_form.option_3_chosen class="form-control" %}
+                {{ post_edit_form.boolean.errors }}
+            </div>
+        {% endif %}
+
+        {% if question.option_3|length > 0 %}
+            <div class="form-row">
+                <label>{{question.option_4}}</label>
+                {% render_field answer_give_form.option_4_chosen class="form-control" %}
+                {{ post_edit_form.boolean.errors }}
+            </div>
+        {% endif %}
+
+        <hr>
+
+        {% if last_question == True %}
+            <button class="btn btn-primary" type="submit" name="action" value="save_answer_and_finish">Save answer and show results</button>
+        {% else %}
+            <button class="btn btn-primary" type="submit" name="action" value="save_answer_and_go_next">Save answer and go next</button>
+        {% endif %}
+    </form>
+</div>
+
+
+{% endblock content %}

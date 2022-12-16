@@ -1,0 +1,26 @@
+{% load widget_tweaks %} {% block content %}
+
+
+
+
+<body>
+<div class="container-fluid">
+    {% block top_menu %}
+    {% include 'top_panel.html' %}
+    {% endblock %}
+    <hr>
+
+    <h3>{{questionnaire.title}}</h3>
+    <h5>Questions current/total: {{question_number}}/{{questions_total}}</h5>
+
+    <hr>
+
+    <div class="container-fluid">
+        {% block question_block %}
+        {% include 'question_block.html' %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+
+{% endblock content %}
