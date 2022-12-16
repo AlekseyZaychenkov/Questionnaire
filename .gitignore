@@ -1,2 +1,4 @@
 /questionnaire/migrations/
 /account/migrations/
+/venv/
+/db.sqlite3
